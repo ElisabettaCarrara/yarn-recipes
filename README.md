@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+# Yarn Recipes Plugin for WordPress
 
-You can use the [editor on GitHub](https://github.com/ElisabettaCarrara/yarn-recipes/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## What it does:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### This plugins adds a set of block patterns for the block editor, specifically designed to allow Yarn Crafters to publish patterns and info on the materials they use in their craft.
 
-### Markdown
+- The Yarn Recipes block pattern includes basic WordPress blocks that are included in a WordPress fresh install.
+- The Sell Yarn Recipes block pattern **is a work in progress** and includes blocks from the Easy Digital Download plugin, that is why this plugin includes a notice recommending the installation of EDD
+- the Yarns Block pattern and Needles Block pattern can be used to show detailed information about yarns and needles and **are a work in progress** at the moment.
+- The Complete Yarn Recipes block pattern includes Yarn Recipes, Yarns and Needles block patterns styled together in a coherent way and **is a work in progress** at the moment.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## ROADMAP
 
-```markdown
-Syntax highlighted code block
+- Correct plugin heaader and READMI file
+- Including a check for dependencies
+- Including a check for the WP version to make sure that the plugin can't be activated on an unsupported version (the plugin need the function register_block_pattern to work properly, this was introduced in WP 5.5.0).
+- Including a check to verify if EDD is installed and active on the site to make sure the Sell Yarn Recipes block pattern can work properly (I evaluated to include this using a library, but decided against that, I will adapts [this code instead: ](https://github.com/TukuToi/toolwine-rewievs-and-ratings/blob/2ad0e2ef407b00f3a8f4a81f45ca5ff84612d6f3/includes/class-tw-rar-activator.php).
+- Include the Sell Yarn Recipes, Needles and Yarns block patterns in the plugin
+- Set up a structure for testing the plugin
+- Eventually releasing the plugin
 
-# Header 1
-## Header 2
-### Header 3
+This is a project I am doing to learn how to structure a plugin the correct way and to gain confidence by writing something very basic.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ElisabettaCarrara/yarn-recipes/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+In case you have suggestion, you are very welcome to contribute.
