@@ -11,7 +11,7 @@
 
 ## ROADMAP
 
-- Correct plugin heaader and READMI file
+- Correct plugin heaader and READMI file - **DONE**
 - Including a check for dependencies
 - Including a check for the WP version to make sure that the plugin can't be activated on an unsupported version (the plugin need the function register_block_pattern to work properly, this was introduced in WP 5.5.0).
 - Including a check to verify if EDD is installed and active on the site to make sure the Sell Yarn Recipes block pattern can work properly (I evaluated to include this using a library, but decided against that, I will adapts [this code instead: ](https://github.com/TukuToi/toolwine-rewievs-and-ratings/blob/2ad0e2ef407b00f3a8f4a81f45ca5ff84612d6f3/includes/class-tw-rar-activator.php).
