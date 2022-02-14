@@ -1,12 +1,18 @@
 <?php 
 
-/*
-Plugin Name: Yarn Recipes
-Description: Adds Yarn Recipes to the block editor.
-Version: 1.0
-Author: Elisabetta Carrara
-Author URI: https://yarnblog.netsons.org/
-*/
+/**
+ * Plugin Name:       Yarn Recipes
+ * Plugin URI:        https://example.com/plugins/the-basics/
+ * Description:       Adds Yarn Recipes to the block editor.
+ * Version:           1.0.0
+ * Requires at least: 5.5
+ * Requires PHP:      7.2
+ * Author:            Elisabetta Carrara
+ * Author URI:        https://yarnblog.netsons.org/
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       yarn-recipes
+ */
 
 function yarn_recipes_block_patterns() {
 
