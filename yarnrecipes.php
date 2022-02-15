@@ -86,5 +86,3 @@ function yarn_recipes_block_patterns() {
 
 }    
 add_action( 'init', 'yarn_recipes_block_patterns' );
-
-?>
