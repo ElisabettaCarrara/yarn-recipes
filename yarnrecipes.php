@@ -19,9 +19,7 @@
  */
 
 add_action( 'admin_notices', array(
-                                  &amp[$this,
-                                  'yarn_recipes_plugin_notices'
-));
+                                 &$this, 'yarn_recipes'));
 public function yarn_recipes_plugin_notices() {
 
 if( !class_exists( 'Easy_Digital_Downloads' ) )
