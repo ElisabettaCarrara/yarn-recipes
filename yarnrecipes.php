@@ -31,7 +31,7 @@ function default_load_plugin()
 
     /* Check If Dependent Plugin Is Active */
 
-    if (is_admin() && get_option('yarn-recipes_plugin') == 'yarn-recipes') {
+    if (is_admin() && get_option('yarn_recipes_plugin') == 'yarn-recipes') {
         delete_option( 'yarn_recipes_activated' );
 
         if (!class_exists('EDD_Payment')) {
@@ -58,9 +58,9 @@ function display_admin_notice()
 	<div class="error notice">
 	    <p>
 	        <strong>Error:</strong>
-	        The <em>Your Current Plugin Name</em> plugin won't execute
-	        because the following required plugin is not active:Dependent Plugin Name.
-	        Please activate these <a href="plugins.php">plugin</a>.
+	        The <em>Yarn Recipes</em> plugin won't execute
+	        because the following required plugin is not active:Easy Digital Download.
+	        Please activate it before using this plugin. <a href="plugins.php">plugin</a>.
 	    </p>
 	</div>
     <?php
