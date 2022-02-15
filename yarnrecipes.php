@@ -47,8 +47,6 @@ function default_load_plugin()
     }
 }
 
-add_action('admin_init', 'default_load_plugin');
-
 /**
  * Display an error message when parent plugin is missing
  */
@@ -63,8 +61,9 @@ function display_admin_notice()
 	        Please activate it before using this plugin. <a href="plugins.php">plugin</a>.
 	    </p>
 	</div>
-    <?php
 }
+
+add_action('admin_init', 'default_load_plugin');
 
 /**
  * Register Yarn Recipes Block Pattern
@@ -87,3 +86,5 @@ function yarn_recipes_block_patterns() {
 
 }    
 add_action( 'init', 'yarn_recipes_block_patterns' );
+
+?>
