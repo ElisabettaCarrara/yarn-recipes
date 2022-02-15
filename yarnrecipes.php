@@ -14,6 +14,25 @@
  * Text Domain:       yarn-recipes
  */
 
+/**
+ * Check for dependecies
+ */
+
+add_action( 'admin_notices', array(
+                                  &amp;$this,
+                                  'yarn_recipes_plugin_notices'
+));
+public function yarn_recipes_plugin_notices() {
+
+if( !class_exists( 'Easy_Digital_Downloads' ) )
+echo "<div class="error">" . __( "Easy Digital Downloads is not active. We recommend installing it to use all the funciotamlities of Yarn Recipes.", 'yarn-recipes' )."</div>";
+
+}
+
+/**
+ * Register Yarn Recipes Block Pattern
+ */
+
 function yarn_recipes_block_patterns() {
 
     register_block_pattern(
