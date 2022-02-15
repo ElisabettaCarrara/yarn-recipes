@@ -20,7 +20,7 @@
 
 add_action( 'admin_notices', array(
                                  &$this, 'yarn_recipes'));
-public function yarn_recipes_plugin_notices() {
+function yarn_recipes_plugin_notices() {
 
 if( !class_exists( 'Easy_Digital_Downloads' ) )
 echo "<div class="error">" . __( "Easy Digital Downloads is not active. We recommend installing it to use all the funciotamlities of Yarn Recipes.", 'yarn-recipes' )."</div>";
