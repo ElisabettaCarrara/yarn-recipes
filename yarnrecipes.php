@@ -18,12 +18,16 @@
  * Check for dependecies
  */
 
-add_action( 'admin_notices', array(
-                                 &$this, 'yarn_recipes'));
-function yarn_recipes_plugin_notices() {
+class Yarn_Recipes_Activator {
 
-if( !class_exists( 'Easy_Digital_Downloads' ) )
-echo "<div class="error">" . __( "Easy Digital Downloads is not active. We recommend installing it to use all the funciotamlities of Yarn Recipes.", 'yarn-recipes' )."</div>";
+	public static function activate() {
+
+		if ( current_user_can( 'activate_plugins' ) && ( !is_plugin_active( 'easy-digital-downloads.php' ) || !is_plugin_active( 'yarn-recipes.plugins.php' ) ) ) {
+        	// Stop activation redirect and show error
+        	wp_die('Sorry, but this plugin requires the Easy Digital Downloads Plugin to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
+    	}
+
+	}
 
 }
 
