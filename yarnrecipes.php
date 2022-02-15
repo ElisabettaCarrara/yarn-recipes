@@ -15,20 +15,55 @@
  */
 
 /**
- * Check for dependecies
+ * Check for EDD dependecies
  */
 
-class Yarn_Recipes_Activator {
+function yarn_recipes_activate()
+{
+    add_option('yarn_recipes_ctivated', 'yarn-recipes');
+}
 
-	public static function activate() {
+register_activation_hook(__FILE__, 'yarn_recipes_activate');
 
-		if ( current_user_can( 'activate_plugins' ) && ( !is_plugin_active( 'easy-digital-downloads.php' ) || !is_plugin_active( 'yarn-recipes.plugins.php' ) ) ) {
-        	// Stop activation redirect and show error
-        	wp_die('Sorry, but this plugin requires the Easy Digital Downloads Plugin to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
-    	}
 
-	}
+function default_load_plugin()
+{
 
+    /* Check If Dependent Plugin Is Active */
+
+    if (is_admin() && get_option('yarn-recipes_plugin') == 'yarn-recipes') {
+        delete_option( 'yarn_recipes_activated' );
+
+        if (!class_exists('EDD_Payment')) {
+            add_action('admin_notices', 'display_admin_notice');
+
+            //Simple Call A Hook for Deactivate our plugin
+            deactivate_plugins(yarn-recipes(__FILE__));
+
+            if (isset($_GET['activate'])) {
+                unset($_GET['activate']);
+            }
+        }
+    }
+}
+
+add_action('admin_init', 'default_load_plugin');
+
+/**
+ * Display an error message when parent plugin is missing
+ */
+function display_admin_notice()
+{
+    ?>
+	<div class="error notice">
+	    <p>
+	        <strong>Error:</strong>
+	        The <em>Your Current Plugin Name</em> plugin won't execute
+	        because the following required plugin is not active:Dependent Plugin Name.
+	        Please activate these <a href="plugins.php">plugin</a>.
+	    </p>
+	</div>
+    <?php
 }
 
 /**
