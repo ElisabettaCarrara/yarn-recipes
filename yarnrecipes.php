@@ -19,7 +19,7 @@
  */
 
 add_action( 'admin_notices', array(
-                                  &amp;$this,
+                                  &amp[$this,
                                   'yarn_recipes_plugin_notices'
 ));
 public function yarn_recipes_plugin_notices() {
