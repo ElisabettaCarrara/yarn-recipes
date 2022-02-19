@@ -15,57 +15,6 @@
  */
 
 /**
- * Check for EDD dependecies
- */
-
-function yarn_recipes_activate()
-{
-    add_option('yarn_recipes_ctivated', 'yarn-recipes');
-}
-
-register_activation_hook(__FILE__, 'yarn_recipes_activate');
-
-
-function default_load_plugin()
-{
-
-    /* Check If Dependent Plugin Is Active */
-
-    if (is_admin() && get_option('yarn_recipes_plugin') == 'yarn-recipes') {
-        delete_option( 'yarn_recipes_activated' );
-
-        if (!class_exists('EDD_Payment')) {
-            add_action('admin_notices', 'display_admin_notice');
-
-            //Simple Call A Hook for Deactivate our plugin
-            deactivate_plugins(yarn-recipes(__FILE__));
-
-            if (isset($_GET['activate'])) {
-                unset($_GET['activate']);
-            }
-        }
-    }
-}
-
-/**
- * Display an error message when parent plugin is missing
- */
-function display_admin_notice()
-{
-    ?>
-	<div class="error notice">
-	    <p>
-	        <strong>Error:</strong>
-	        The <em>Yarn Recipes</em> plugin won't execute
-	        because the following required plugin is not active:Easy Digital Download.
-	        Please activate it before using this plugin. <a href="plugins.php">plugin</a>.
-	    </p>
-	</div>
-}
-
-add_action('admin_init', 'default_load_plugin');
-
-/**
  * Register Yarn Recipes Block Pattern
  */
 
