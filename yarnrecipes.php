@@ -15,8 +15,72 @@
  */
 
 /**
+* Check for Easy Digital Downloads and Easy Digitals Downloads Blocks dependencies
+*/
+
+$active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+if ( in_array( 'easy-digital-downloads/easy-digital-downloads.php' || 'edd-blocks/edd-blocks.php', $active_plugins ) ) {
+    // Plugin is active
+}
+
+// yarn-recipes/classes/Dependency_Checker.php
+class yarn_recipes_dependency_checker {
+
+	/**
+	 * Define the plugins that our plugin requires to function.
+	 * Array format: 'Plugin Name' => 'Path to main plugin file'
+	 */
+	const REQUIRED_PLUGINS = array(
+		'Easy Digital Download'     => 'easy-digital-downloads/easy-digital-downloads.php',
+		'Easy Digital Downloads Blocks' => 'edd-blocks/edd-blocks.php',
+	);
+
+	/**
+	 * Check if all required plugins are active, otherwise throw an exception.
+	 *
+	 * @throws yarn_recipes_missing_dependencies_exception
+	 */
+	public function check() {
+		$missing_plugins = $this->get_missing_plugins_list();
+		if ( ! empty( $missing_plugins ) ) {
+			throw new yarn_recipes_missing_dependencies_exception( $missing_plugins );
+		}
+	}
+
+	/**
+	 * @return string[] Names of plugins that we require, but that are inactive.
+	 */
+	private function get_missing_plugins_list() {
+		$missing_plugins = array();
+		foreach ( self::REQUIRED_PLUGINS as $plugin_name => $main_file_path ) {
+			if ( ! $this->is_plugin_active( $main_file_path ) ) {
+				$missing_plugins[] = $plugin_name;
+			}
+		}
+		return $missing_plugins;
+	}
+
+	/**
+	 * @param string $main_file_path Path to main plugin file, as defined in self::REQUIRED_PLUGINS.
+	 *
+	 * @return bool
+	 */
+	private function is_plugin_active( $main_file_path ) {
+		return in_array( $main_file_path, $this->get_active_plugins() );
+	}
+
+	/**
+	 * @return string[] Returns an array of active plugins' main files.
+	 */
+	private function get_active_plugins() {
+		return apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+	}
+
+}
+
+/**
  * Register Yarn Recipes Block Pattern
- */
+*/
 
 function yarn_recipes_block_patterns() {
 
@@ -37,8 +101,8 @@ function yarn_recipes_block_patterns() {
 add_action( 'init', 'yarn_recipes_block_patterns' );
 
 /**
- * Register Yarn Recipes Block Patternwith EDD purchase button block for paid patterns
- */
+* Register Yarn Recipes Block Patternwith EDD purchase button block for paid patterns
+*/
 
 function paid_yarn_recipes_block_patterns() {
 
